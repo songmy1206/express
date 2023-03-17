@@ -5,13 +5,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>메인 페이지</title>
-  <!-- localhost:4000/public/ -->
-  <link rel="stylesheet" href="/css/style.css">
-  <script defer src="/js/main.js"></script>
 </head>
 <body>
-  <h1>메인 페이지</h1>
-  <p><%= msg %></p>
-  <img src="/images/cat.jpg" alt="cat">
+  <h1>smy page</h1>
+  <h2><a href="/users">회원 서비스</a></h2>
+  <h2><a href="/login">로그인 바로가기</a></h2>
+  <h2><a href="/register">회원가입 바로가기</a></h2>
+  <h2><a href="/dbBoard">게시판 서비스</a></h2>
+  <script>
+    // console.log(document.cookie);
+    // document.cookie = "user=smy; expires=7 Mar 2023 13:00:00 GMT; path=/";
+    // document.cookie = "user=mys; expires=7 Mar 2023 13:00:00 GMT; path=/";
+    console.log(document.cookie);
+  </script>
 </body>
 </html>
