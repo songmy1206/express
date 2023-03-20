@@ -3,6 +3,7 @@ const cors = require('cors');
 // const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+require('dotenv').config();
 
 const app = express();
 const PORT = 4000;
@@ -14,15 +15,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('smy'));
 app.use(
   session({
     secret: 'tetz',
     resave: false,
     saveUninitialized: true,
-    cookie: {
-      maxAge: 1000 * 60 * 60,
-    },
   }),
 );
 

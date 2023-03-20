@@ -12,7 +12,7 @@ const boardDB = {
   // 게시글 추가하기
   writeArticle: (newArticle, cb) => {
     connection.query(
-      `INSERT INTO mydb.board (TITLE, CONTENT) VALUES('${newArticle.title}', '${newArticle.content}')`,
+      `INSERT INTO mydb.board (USERID, TITLE, CONTENT) VALUES('${newArticle.userId}', '${newArticle.title}', '${newArticle.content}')`,
       (err, data) => {
         if (err) throw err;
         cb(data);
@@ -29,7 +29,7 @@ const boardDB = {
       },
     );
   },
-  // 특정 id를 가지는 게시들을 수정하는 컨트롤러
+  // 특정 id를 가지는 게시들을 하는 컨트롤러
   modifyArticle: (id, modifyArticle, cb) => {
     connection.query(
       `UPDATE mydb.board SET TITLE = '${modifyArticle.title}', CONTENT = '${modifyArticle.content}' WHERE ID_PK = ${id};`,
