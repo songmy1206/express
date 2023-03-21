@@ -9,39 +9,6 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1,
 });
 
-async function main() {
-  try {
-    await client.connect();
-    const test = client.db('kdt5').collection('test');
-
-    const deleteManyResult = await test.deleteMany({});
-    if (!deleteManyResult.acknowledged) return '삭제 에러 발생';
-
-    const insertManyResult = await test.insertMany([
-      { name: 'pororo', age: 5 },
-      { name: 'crong', age: 4 },
-      { name: 'loopy', age: 6 },
-    ]);
-    if (!insertManyResult.acknowledged) return '삽입 에러 발생';
-
-    // const deleteManyResultSecond = await test.deleteMany({ age: { $gte: 5 } });
-    // console.log(deleteManyResultSecond);
-
-    // const updateManyResult = await test.updateMany(
-    //   { age: { $gte: 5 } },
-    //   { $set: { name: '5살이상' } },
-    // );
-    // console.log(updateManyResult);
-
-    const findCursor = test.find({ age: { $gte: 5 } });
-    const dataArr = await findCursor.toArray();
-    console.log(dataArr);
-  } catch (err) {
-    console.error(err);
-  }
-}
-main();
-
 // insertOne
 // client.connect((err) => {
 //   const test = client.db('kdt5').collection('test');

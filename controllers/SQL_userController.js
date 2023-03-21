@@ -1,45 +1,8 @@
-const mongoClient = require('./mongoConnect');
+const connection = require('./dbConnect');
 
 const userDB = {
   // 중복회원 찾기
-  userCheck: async (userId) => {
-    try {
-      const client = await mongoClient.connect();
-      const user = client.db('kdt5').collection('user');
-      const findUser = await user.findOne({ id: userId });
-      if (!findUser) return false;
-      return findUser;
-    } catch (err) {
-      console.error(err);
-    }
-  },
-  // 회원가입하기
-  registerUser: async (newUser)=>{
-    try{
-      const client = await mongoClient.connect();
-      const user = client.db('kdt5').collection('user');
-      await isSecureContext.insertOne(newUser)
-      return true;
-    }catch(err){
-      console.log(err);
-    }
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  userCheckSQL: (userId, cb) => {
+  userCheck: (userId, cb) => {
     connection.query(
       `SELECT * FROM mydb.user WHERE USERID = '${userId}';`,
       (err, data) => {
